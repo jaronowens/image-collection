@@ -1,6 +1,9 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+const testPath = "F:/Thunder/Documents/Salvaged Downloads/Rave in the Grave";
+
 module.exports = {
   siteMetadata: {
     title: `Image Collection`,
@@ -13,5 +16,20 @@ module.exports = {
       "path": "./src/images/"
     },
     __key: "images"
-  }]
+  },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     "name": "pinups",
+    //     "path": "F:/Thunder/Documents/Salvaged Downloads/pinups"
+    //   }
+    // }
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pinups",
+        "path": testPath
+      }
+    },
+  ]
 };
