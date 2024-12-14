@@ -2,7 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-const testPath = "F:/Thunder/Documents/Salvaged Downloads/Rave in the Grave";
+const testPath = "F:/Thunder/Documents/Salvaged Downloads/success/2023";
 
 module.exports = {
   siteMetadata: {
@@ -24,12 +24,12 @@ module.exports = {
     //     "path": "F:/Thunder/Documents/Salvaged Downloads/pinups"
     //   }
     // }
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "pinups",
-        "path": testPath
-      }
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     "name": "pinups",
+    //     "path": testPath
+    //   }
+    // },
   ]
 };

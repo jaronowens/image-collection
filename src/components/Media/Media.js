@@ -5,7 +5,7 @@ const Media = ({mediaNode}) => {
     // add conditonal logic here to separate image display from gifs or videos
 
     return(
-        <GatsbyImage image={getImage(mediaNode.childImageSharp)} alt={mediaNode.id} />
+        <GatsbyImage image={getImage(mediaNode.childImageSharp)} alt={mediaNode.childImageSharp.id} />
     );
 }
 

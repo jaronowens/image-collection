@@ -1,0 +1,7 @@
+.media-list {
+    display: flex;
+    flex-wrap: wrap;
+    .gatsby-image-wrapper {
+        flex: 0 1 33%;
+    }
+}
