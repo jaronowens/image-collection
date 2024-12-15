@@ -9,14 +9,15 @@ module.exports = {
     title: `Image Collection`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "images",
-      "path": "./src/images/"
-    },
-    __key: "images"
-  },
+  plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp",
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     "name": "images",
+    //     "path": "./src/images/sample"
+    //   },
+    //   __key: "images"
+    // },
     // {
     //   resolve: 'gatsby-source-filesystem',
     //   options: {
@@ -24,12 +25,12 @@ module.exports = {
     //     "path": "F:/Thunder/Documents/Salvaged Downloads/pinups"
     //   }
     // }
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     "name": "pinups",
-    //     "path": testPath
-    //   }
-    // },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pinups",
+        "path": testPath
+      }
+    },
   ]
 };

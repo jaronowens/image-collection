@@ -1,7 +1,7 @@
 import React from "react";
 import "../../sass/styles.scss";
 
-const Layout = ({children}) => {
+const Layout = ({sidebar, children}) => {
 
     return(
         <div className="page-layout">

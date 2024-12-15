@@ -1,0 +1,15 @@
+// Media queries
+// Usage:
+// @include breakpoint ($large) { };
+// @include breakpoint(400px, min-height) { );
+$media-feature: 'min-width' !default;
+@mixin breakpoint($point, $feature: $media-feature) {
+    @media (#{$feature}: $point) {
+        @content;
+    }
+}
+@mixin bp($point, $feature: $media-feature) {
+    @media (#{$feature}: $point) {
+        @content;
+    }
+}

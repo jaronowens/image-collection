@@ -18,13 +18,17 @@ export default ImagePage;
 export const Head = () => <title>Images</title>
 
 export const query = graphql`
-query QueryImages {
+query queryImages {
   allFile {
     nodes {
       publicURL
+      id
+      name
       childImageSharp {
+        id
         gatsbyImageData
       }
+      extension
     }
   }
 }`

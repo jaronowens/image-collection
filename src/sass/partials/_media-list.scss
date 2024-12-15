@@ -1,7 +1,19 @@
 .media-list {
     display: flex;
     flex-wrap: wrap;
-    .gatsby-image-wrapper {
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    .media-item {
         flex: 0 1 33%;
+        max-height: 450px;
+        a {
+            display: block;
+            height: 100%;
+        }
+        img, video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
     }
 }

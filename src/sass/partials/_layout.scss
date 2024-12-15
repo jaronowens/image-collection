@@ -1,4 +1,7 @@
+$sans: 'Roboto', sans-serif;
+
 .page-layout {
     max-width: 1440px;
     margin: 0 auto;
+    font-family: $sans;
 }
