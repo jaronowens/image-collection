@@ -1,8 +1,8 @@
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import Fancybox from "../../vendor/Fancybox";
 
-const Media = ({ mediaNode }) => {
+const Media = ({ mediaNode, galleryName }) => {
     // add conditonal logic here to separate image display from gifs or videos
     let mediaRender;
 
@@ -35,7 +35,7 @@ const Media = ({ mediaNode }) => {
     if (mediaRender) {
         return (
             <Fancybox className="media-item">
-                <a data-fancybox href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
+                <a data-fancybox={galleryName} href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
                     {mediaRender}
                 </a>
             </Fancybox>

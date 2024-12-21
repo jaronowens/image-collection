@@ -3,19 +3,19 @@ import { graphql } from "gatsby";
 import MediaList from "../components/Media/MediaList";
 import Layout from "../components/Layout/Layout";
 
-const ImagePage = ({ data }) => {
+const TournamentPage = ({ data }) => {
 
     return (
         <Layout>
           <h1>Image Collection</h1>
-            <MediaList nodes={data.allFile.nodes} hasPager={true} itemsPerPage={4} gallery={'images'}/>
+            <MediaList nodes={data.allFile.nodes} />
         </Layout>
     );
 }
 
-export default ImagePage;
+export default TournamentPage;
 
-export const Head = () => <title>Images</title>
+export const Head = () => <title>Tournament</title>
 
 export const query = graphql`
 query queryImages {
