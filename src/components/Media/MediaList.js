@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Media from "./Media";
 
-const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, gallery }) => {
+const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6}) => {
 
     const [page, setPage] = useState(0);
     let displayedImages;
@@ -35,7 +35,7 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, gallery }) => {
                 <button id="next" onClick={handleClick}>Next</button>
             </div>
             <div className="media-list">
-                {displayedImages.map(node => <Media mediaNode={node} key={node.id} galleryName={gallery} />)}
+                {displayedImages.map(node => <Media mediaNode={node} key={node.id} />)}
             </div>
         </>
     );

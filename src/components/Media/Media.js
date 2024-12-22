@@ -2,7 +2,7 @@
 import React from "react";
 import Fancybox from "../../vendor/Fancybox";
 
-const Media = ({ mediaNode, galleryName }) => {
+const Media = ({ mediaNode }) => {
     // add conditonal logic here to separate image display from gifs or videos
     let mediaRender;
 
@@ -35,7 +35,7 @@ const Media = ({ mediaNode, galleryName }) => {
     if (mediaRender) {
         return (
             <Fancybox className="media-item">
-                <a data-fancybox={galleryName} href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
+                <a data-fancybox href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
                     {mediaRender}
                 </a>
             </Fancybox>
