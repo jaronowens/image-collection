@@ -1,5 +1,7 @@
 @use 'modules/variables';
 @use 'modules/mixins';
+@use 'partials/normalize.css';
 
 @use 'partials/layout';
 @use 'partials/media-list';
+@use 'partials/media-viewer';

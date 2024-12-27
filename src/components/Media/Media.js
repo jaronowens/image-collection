@@ -2,7 +2,7 @@
 import React from "react";
 import Fancybox from "../../vendor/Fancybox";
 
-const Media = ({ mediaNode }) => {
+const Media = ({ mediaNode, fancybox }) => {
     // add conditonal logic here to separate image display from gifs or videos
     let mediaRender;
 
