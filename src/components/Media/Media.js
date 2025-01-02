@@ -11,15 +11,15 @@ const Media = ({ mediaNode, fancybox }) => {
         const fileType = mediaNode.extension;
         switch (fileType) {
             case 'mp4': {
-                mediaRender = (<video><source src={mediaNode.publicURL} /></video>);
+                mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
                 break;
             }
             case 'gif': {
-                mediaRender = (<img src={mediaNode.publicURL} alt={mediaNode.name} />);
+                mediaRender = (<div className="thumbnail gif" style={{ backgroundImage: `url(${mediaNode.publicURL})` }}></div>);
                 break;
             }
             case 'webm': {
-                mediaRender = (<video><source src={mediaNode.publicURL} /></video>);
+                mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
                 break;
             }
             default:
@@ -27,21 +27,29 @@ const Media = ({ mediaNode, fancybox }) => {
         }
     } else {
         // mediaRender = (<GatsbyImage image={getImage(mediaNode.childImageSharp)} alt={mediaNode.name} />);
-        mediaRender = (<img src={mediaNode.publicURL} alt={mediaNode.name} />);
+        // mediaRender = (<img src={mediaNode.publicURL} alt={mediaNode.name} />);
+        mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.publicURL})` }}></div>);
     }
 
-    console.log(mediaNode);
-
     if (mediaRender) {
-        return (
-            <Fancybox className="media-item">
-                <a data-fancybox href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
+        if (fancybox || mediaNode.extension.includes('mp4') || mediaNode.extension.includes('webm')) {
+            return (
+                <Fancybox className="media-item">
+                    <a data-fancybox href={mediaNode.publicURL} data-src={mediaNode.publicURL}>
+                        {mediaRender}
+                    </a>
+                </Fancybox>
+            );
+        } else {
+            return (
+                <div className="media-item">
                     {mediaRender}
-                </a>
-            </Fancybox>
-        );
+                </div>
+            );
+        }
     } else {
-        return(<></>);
+        // something went wrong with the media node, skip this one
+        return (<></>);
     }
 
 }

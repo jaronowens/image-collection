@@ -1,19 +1,53 @@
 .media-list {
     display: flex;
     flex-wrap: wrap;
+
     // display: grid;
     // grid-template-columns: 1fr 1fr 1fr;
     .media-item {
-        flex: 0 1 33%;
+        flex: 0 1 25%;
         max-height: 450px;
+
         a {
             display: block;
             height: 100%;
+            overflow: hidden;
         }
-        img, video {
+
+        img,
+        video {
             width: 100%;
             height: auto;
             object-fit: cover;
+        }
+
+        &:has(video) {
+            background-color: #1E1E1E;
+            a {
+                position: relative;
+                display: flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    height: 128px;
+                    width: 128px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    background-image: url(../images/icon-playback.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        .thumbnail {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
         }
     }
 }

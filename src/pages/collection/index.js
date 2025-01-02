@@ -27,10 +27,13 @@ query queryImages {
   allFile {
     nodes {
       publicURL
+      id
+      name
       childImageSharp {
-        gatsbyImageData
         id
+        gatsbyImageData
       }
+      extension
     }
   }
 }`

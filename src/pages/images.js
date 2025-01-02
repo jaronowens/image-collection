@@ -8,7 +8,7 @@ const ImagePage = ({ data }) => {
     return (
         <Layout>
           <h1>Image Collection</h1>
-            <MediaList nodes={data.allFile.nodes} hasPager={true} itemsPerPage={6} gallery={'images'}/>
+            <MediaList nodes={data.allFile.nodes} hasPager={true} itemsPerPage={12} gallery={'images'}/>
         </Layout>
     );
 }

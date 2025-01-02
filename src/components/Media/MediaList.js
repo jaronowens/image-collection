@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Media from "./Media";
+import Pager from "../Pager/Pager";
 
-const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6}) => {
+const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}) => {
 
     const [page, setPage] = useState(0);
     let displayedImages;
@@ -30,12 +31,9 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6}) => {
 
     return (
         <>
-            <div className="controls">
-                <button id="prev" onClick={handleClick}>Previous</button>
-                <button id="next" onClick={handleClick}>Next</button>
-            </div>
+            <Pager handler={handleClick} />
             <div className="media-list">
-                {displayedImages.map(node => <Media mediaNode={node} key={node.id} />)}
+                {displayedImages.map(node => <Media mediaNode={node} key={node.id} fancybox={fancybox} />)}
             </div>
         </>
     );

@@ -7,20 +7,18 @@ const RandomSessionPage = ({ data }) => {
 
   const randomizeSession = (sessionNodes) => {
     return sessionNodes.sort(function (a, b) { return 0.5 - Math.random() });
-    /* This uses a compare function. The compare function compares two values in the array (a and b) and sorts them based on whether which is less.
-     * Combined with Math.random (which generates a random number between 0 and 1), this successfully randomizes the array. */
   }
 
   const [mediaNodes, setMediaNodes] = useState(randomizeSession(data.allFile.nodes));
 
   const [imageIndex, setImageIndex] = useState(0);
-  
-  console.log(imageIndex);
 
   const advanceIndex = () => {
-    setImageIndex(imageIndex + 1);
+    if (imageIndex <= mediaNodes.length) {
+      setImageIndex(imageIndex + 1);
+    }
   }
-  setInterval(advanceIndex, 5000);
+  setInterval(advanceIndex, 10000);
 
   const displayedImage = mediaNodes[imageIndex];
 

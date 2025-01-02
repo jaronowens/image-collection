@@ -2,7 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-const testPath = "F:/Thunder/Documents/Salvaged Downloads/success/2023";
+const testPath = "F:/Thunder/Documents/Salvaged Downloads/success/2024";
 
 module.exports = {
   siteMetadata: {
