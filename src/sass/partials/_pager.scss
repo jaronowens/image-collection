@@ -1,6 +1,20 @@
-.pager-controls {
+.pager {
     position: fixed;
     z-index: 5;
-    top: 80%;
+    top: 90%;
     left: 50%;
+    transform: translateX(-50%);
+    .pager-controls {
+        min-width: 350px;
+        padding: 12px 25px;
+        background-color: #FFF;
+        border: 1px solid #1E1E1E;
+        border-radius: 30px;
+        .pager-flex-wrap {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Media from "./Media";
-import Pager from "../Pager/Pager";
+import Controls from "../Controls/Controls";
 
 const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}) => {
 
@@ -31,7 +31,7 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}
 
     return (
         <>
-            <Pager handler={handleClick} />
+            <Controls handler={handleClick} />
             <div className="media-list">
                 {displayedImages.map(node => <Media mediaNode={node} key={node.id} fancybox={fancybox} />)}
             </div>

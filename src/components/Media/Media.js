@@ -15,7 +15,7 @@ const Media = ({ mediaNode, fancybox }) => {
                 break;
             }
             case 'gif': {
-                mediaRender = (<div className="thumbnail gif" style={{ backgroundImage: `url(${mediaNode.publicURL})` }}></div>);
+                mediaRender = (<div className="thumbnail gif" style={{ backgroundImage: `url(${mediaNode.publicURL.replace(' ', '%20')})` }}></div>);
                 break;
             }
             case 'webm': {
@@ -28,7 +28,7 @@ const Media = ({ mediaNode, fancybox }) => {
     } else {
         // mediaRender = (<GatsbyImage image={getImage(mediaNode.childImageSharp)} alt={mediaNode.name} />);
         // mediaRender = (<img src={mediaNode.publicURL} alt={mediaNode.name} />);
-        mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.publicURL})` }}></div>);
+        mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.publicURL.replace(' ', '%20')})` }}></div>);
     }
 
     if (mediaRender) {

@@ -44,10 +44,10 @@
             }
         }
 
-        .thumbnail {
-            height: 300px;
+        .thumbnail, .video-thumbnail {
+            height: 320px;
             background-size: cover;
-            background-position: center;
+            background-position: top center;
         }
     }
 }

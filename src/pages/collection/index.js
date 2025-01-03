@@ -7,8 +7,6 @@ const IndexPage = ({ data }) => {
 
     const [collection, setCollection] = useState(data.allFile.nodes);
 
-    console.log(collection);
-
     return (
         <Layout>
             <h1>Your Collection</h1>
