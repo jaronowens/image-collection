@@ -31,7 +31,7 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}
 
     return (
         <>
-            <Controls handler={handleClick} />
+            {hasPager ? <Controls handler={handleClick} /> : <></>}
             <div className="media-list">
                 {displayedImages.map(node => <Media mediaNode={node} key={node.id} fancybox={fancybox} />)}
             </div>

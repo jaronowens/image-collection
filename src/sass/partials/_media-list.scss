@@ -1,9 +1,6 @@
 .media-list {
     display: flex;
     flex-wrap: wrap;
-
-    // display: grid;
-    // grid-template-columns: 1fr 1fr 1fr;
     .media-item {
         flex: 0 1 25%;
         max-height: 450px;
@@ -49,5 +46,8 @@
             background-size: cover;
             background-position: top center;
         }
+    }
+    .media-detail {
+        display: none;
     }
 }
