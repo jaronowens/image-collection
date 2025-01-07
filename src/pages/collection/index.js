@@ -5,14 +5,31 @@ import MediaList from "../../components/Media/MediaList";
 
 const IndexPage = ({ data }) => {
 
-    const [collection, setCollection] = useState(data.allFile.nodes);
+  const intializeCollection = (mediaNodes) => {
+    const stateNodes = [];
+    mediaNodes.forEach(mediaNode => {
+      const workingNode = {
+        ...mediaNode,
+        values: {
+          selected: false,
+          rating: 0,
+          favorite: false
+        }
+      };
+      stateNodes.push(workingNode);
+    });
+    return stateNodes;
+  };
 
-    return (
-        <Layout>
-            <h1>Your Collection</h1>
-            <MediaList nodes={collection} />
-        </Layout>
-    );
+  const [collection, setCollection] = useState(intializeCollection(data.allFile.nodes));
+
+  console.log(collection);
+  return (
+    <Layout>
+      <h1>Your Collection</h1>
+      <MediaList nodes={collection} />
+    </Layout>
+  );
 
 }
 

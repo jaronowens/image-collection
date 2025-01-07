@@ -4,7 +4,8 @@
 
 // SFW TEST PATHS
 const characters = "F:/Thunder/Pictures/Characters";
-
+const xiv = "F:/Thunder/Pictures/Uplay";
+const mountain = "F:/Thunder/Pictures/Photos/Mountain Trip/final";
 
 // NSFW PATHS
 const sucess2022 = "F:/Thunder/Documents/Salvaged Downloads/success/2022";
@@ -30,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "pinups",
-        "path": sucess2022
+        "path": mountain
       }
     },
   ]

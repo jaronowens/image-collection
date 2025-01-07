@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Media from "./Media";
 import Controls from "../Controls/Controls";
+import Button from "../Controls/Button";
 
-const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}) => {
+const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true }) => {
 
     const [page, setPage] = useState(0);
     let displayedImages;
 
     const handleClick = (event) => {
-        console.log(event.target.id);
         switch (event.target.id) {
             case 'prev':
                 setPage(page - itemsPerPage);
@@ -27,11 +27,17 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true}
     } else {
         displayedImages = nodes;
     }
+    console.log(displayedImages);
 
 
     return (
         <>
-            {hasPager ? <Controls handler={handleClick} /> : <></>}
+            {hasPager ?
+                <Controls>
+                    <Button id='prev' handler={handleClick}>Previous</Button>
+                    <Button id='next' handler={handleClick}>Next</Button>
+                </Controls>
+                : <></>}
             <div className="media-list">
                 {displayedImages.map(node => <Media mediaNode={node} key={node.id} fancybox={fancybox} />)}
             </div>

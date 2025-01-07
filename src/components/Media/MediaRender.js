@@ -5,17 +5,29 @@ const MediaRender = ({mediaNode, thumbnail}) => {
     if (mediaNode.childImageSharp == null) {
         const fileType = mediaNode.extension;
         switch (fileType) {
-            // special image cases
+            // special media cases
             case 'mp4': {
-                mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
+                if(thumbnail) {
+                    mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
+                } else {
+                    mediaRender = (<video className="video" autoPlay controls><source src={mediaNode.publicURL} /></video>)
+                }
                 break;
             }
             case 'gif': {
-                mediaRender = (<div className="thumbnail gif" style={{ backgroundImage: `url(${mediaNode.publicURL.replace(' ', '%20')})` }}></div>);
+                if(thumbnail) {
+                    mediaRender = (<div className="thumbnail gif" style={{ backgroundImage: `url(${mediaNode.publicURL.replace(' ', '%20')})` }}></div>);
+                } else {
+                    mediaRender = (<div className="media-image"><img src={mediaNode.publicURL} alt={mediaNode.name}/></div>);
+                }
                 break;
             }
             case 'webm': {
-                mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
+                if(thumbnail) {
+                    mediaRender = (<video className="video-thumbnail"><source src={mediaNode.publicURL} /></video>);
+                } else {
+                    mediaRender = (<video className="video" autoPlay controls><source src={mediaNode.publicURL} /></video>)
+                }
                 break;
             }
             default:
@@ -26,7 +38,7 @@ const MediaRender = ({mediaNode, thumbnail}) => {
         if(thumbnail) {
             mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.publicURL.replace(' ', '%20')})` }}></div>);
         } else {
-            mediaRender = (<div className="media-image"><img src={mediaNode.publicURL} /></div>);
+            mediaRender = (<div className="media-image"><img src={mediaNode.publicURL} alt={mediaNode.name}/></div>);
         }
     }
     return mediaRender;
