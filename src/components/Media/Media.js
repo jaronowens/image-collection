@@ -3,14 +3,14 @@ import Fancybox from "../../vendor/Fancybox";
 import MediaRender from "./MediaRender";
 import MediaDetail from "./MediaDetail";
 
-const Media = ({ mediaNode, fancybox }) => {
+const Media = ({ mediaNode, fancybox, thumbnail = true }) => {
 
-    if (fancybox || mediaNode.extension.includes('mp4') || mediaNode.extension.includes('webm')) {
+    if (fancybox) {
         return (
             <>
                 <Fancybox className="media-item">
                     <a data-fancybox href={`${mediaNode.publicURL}`} data-src={`#${mediaNode.id}`}>
-                        <MediaRender mediaNode={mediaNode} thumbnail={true} />
+                        <MediaRender mediaNode={mediaNode} thumbnail={thumbnail} />
                     </a>
                 </Fancybox>
                 <MediaDetail mediaNode={mediaNode} />
@@ -19,7 +19,7 @@ const Media = ({ mediaNode, fancybox }) => {
     } else {
         return (
             <div className="media-item">
-                <MediaRender mediaNode={mediaNode} thumbnail={true} />
+                <MediaRender mediaNode={mediaNode} thumbnail={thumbnail} />
             </div>
         );
     }
