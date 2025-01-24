@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import MediaViewer from "../components/Media/MediaViewer";
 import Controls from "../components/Controls/Controls";
 import Button from "../components/Controls/Button";
 
+import loadingGif from "../images/loading.gif";
+
 const RandomSessionPage = ({ data }) => {
+
+  let randomizedNodes;
 
   const randomizeSession = (sessionNodes) => {
     return sessionNodes.sort(function (a, b) { return 0.5 - Math.random() });
   }
 
+  const loadingImage = {
+    childImageSharp: null,
+    extension: 'jpg',
+    id: 'placeholder',
+    name: 'placeholder',
+    publicURL: loadingGif
+  };
 
-  const [mediaNodes, setMediaNodes] = useState(randomizeSession(data.allFile.nodes));
+  useEffect(() => {
+    randomizedNodes = randomizeSession(data.allFile.nodes);
+    setMediaNodes(randomizedNodes);
+  }, [randomizedNodes]);
+
+  const [mediaNodes, setMediaNodes] = useState(randomizedNodes);
 
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -21,10 +37,12 @@ const RandomSessionPage = ({ data }) => {
   const controlHandler = (event) => {
     switch(event.target.id) {
       case 'prev': 
+        setImageIndex(imageIndex - 1);
       break;
       case 'pause': 
       break;
-      case 'next': 
+      case 'next':
+        setImageIndex(imageIndex + 1);
       break;
       case 'favorite': 
       break;
@@ -37,14 +55,26 @@ const RandomSessionPage = ({ data }) => {
     }
   }
 
-  const advanceIndex = () => {
-    if (imageIndex <= mediaNodes.length) {
-      setImageIndex(imageIndex + 1);
-    }
-  }
-  setInterval(advanceIndex, 10000);
+  // const advanceIndex = () => {
+  // //   if (imageIndex <= mediaNodes.length) {
+  // //     setImageIndex(imageIndex + 1);
+  // //   }
+  // // }
+  // setInterval(advanceIndex, 10000);
 
-  const displayedImage = mediaNodes[imageIndex];
+  // const incrementTimer = () => {
+  //   setSlideTimer(slideTimer + 1);
+  // }
+
+  // setInterval(incrementTimer, 1000);
+
+  // if (slideTimer >= 100) {
+  //   setImageIndex(imageIndex + 1);
+  //   setSlideTimer(0);
+  // }
+
+  const displayedImage = mediaNodes ? (mediaNodes[imageIndex]) : loadingImage;
+
 
   const randomSessionControls = (
     <Controls>
@@ -61,6 +91,8 @@ const RandomSessionPage = ({ data }) => {
   return (
     <Layout>
       <h1>Random Session</h1>
+      <div>Image Index: {imageIndex}</div>
+      <div>Slide Timer: {slideTimer}</div>
       <MediaViewer node={displayedImage} controls={randomSessionControls} />
     </Layout>
   );
