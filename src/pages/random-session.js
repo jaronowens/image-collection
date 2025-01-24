@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
+import { useStopwatch } from "react-timer-hook";
 import Layout from "../components/Layout/Layout";
 import MediaViewer from "../components/Media/MediaViewer";
 import Controls from "../components/Controls/Controls";
@@ -23,6 +24,18 @@ const RandomSessionPage = ({ data }) => {
     publicURL: loadingGif
   };
 
+  const {
+    totalSeconds,
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: true });
+
   useEffect(() => {
     randomizedNodes = randomizeSession(data.allFile.nodes);
     setMediaNodes(randomizedNodes);
@@ -32,17 +45,22 @@ const RandomSessionPage = ({ data }) => {
 
   const [imageIndex, setImageIndex] = useState(0);
 
-  const [slideTimer, setSlideTimer] = useState(0);
-
   const controlHandler = (event) => {
     switch(event.target.id) {
       case 'prev': 
         setImageIndex(imageIndex - 1);
+        reset();
       break;
-      case 'pause': 
+      case 'pause':
+        if(isRunning) {
+          pause();
+        } else {
+          start();
+        }
       break;
       case 'next':
         setImageIndex(imageIndex + 1);
+        reset();
       break;
       case 'favorite': 
       break;
@@ -55,31 +73,17 @@ const RandomSessionPage = ({ data }) => {
     }
   }
 
-  // const advanceIndex = () => {
-  // //   if (imageIndex <= mediaNodes.length) {
-  // //     setImageIndex(imageIndex + 1);
-  // //   }
-  // // }
-  // setInterval(advanceIndex, 10000);
-
-  // const incrementTimer = () => {
-  //   setSlideTimer(slideTimer + 1);
-  // }
-
-  // setInterval(incrementTimer, 1000);
-
-  // if (slideTimer >= 100) {
-  //   setImageIndex(imageIndex + 1);
-  //   setSlideTimer(0);
-  // }
-
   const displayedImage = mediaNodes ? (mediaNodes[imageIndex]) : loadingImage;
 
+  if (seconds > 10) {
+    setImageIndex(imageIndex + 1);
+    reset();
+  }
 
   const randomSessionControls = (
     <Controls>
       <Button id='prev' handler={controlHandler}>Previous</Button>
-      <Button id='pause' handler={controlHandler}>Pause</Button>
+      <Button id='pause' handler={controlHandler}>{isRunning ? 'Pause' : 'Resume'}</Button>
       <Button id='next' handler={controlHandler}>Next</Button>
       |
       <Button id="favorite" handler={controlHandler}>Favorite</Button>
@@ -92,7 +96,7 @@ const RandomSessionPage = ({ data }) => {
     <Layout>
       <h1>Random Session</h1>
       <div>Image Index: {imageIndex}</div>
-      <div>Slide Timer: {slideTimer}</div>
+      <div>Seconds: {seconds}</div>
       <MediaViewer node={displayedImage} controls={randomSessionControls} />
     </Layout>
   );
