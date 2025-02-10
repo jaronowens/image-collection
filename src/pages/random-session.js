@@ -6,9 +6,8 @@ import MediaList from "../components/Media/MediaList";
 import MediaViewer from "../components/Media/MediaViewer";
 import Controls from "../components/Controls/Controls";
 import Button from "../components/Controls/Button";
-
-import loadingGif from "../images/loading.gif";
 import { convertGatsbyNodes } from "../components/Media/helpers/gatsby-node";
+import { LOADING_IMAGE } from "../components/LoadingImage/LOADING_IMAGE";
 
 const RandomSessionPage = ({ data }) => {
 
@@ -17,14 +16,6 @@ const RandomSessionPage = ({ data }) => {
   const randomizeSession = (sessionNodes) => {
     return sessionNodes.sort(function (a, b) { return 0.5 - Math.random() });
   }
-
-  const loadingImage = {
-    childImageSharp: null,
-    extension: 'jpg',
-    id: 'placeholder',
-    name: 'placeholder',
-    publicURL: loadingGif
-  };
 
   const {
     totalSeconds,
@@ -86,7 +77,7 @@ const RandomSessionPage = ({ data }) => {
     }
   }
 
-  const displayedImage = mediaNodes ? (mediaNodes[imageIndex]) : loadingImage;
+  const displayedImage = mediaNodes ? (mediaNodes[imageIndex]) : LOADING_IMAGE;
 
   if (seconds > 10) {
     setImageIndex(imageIndex + 1);

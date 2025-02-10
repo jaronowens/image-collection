@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "pinups",
-        "path": sucess2023
+        "path": sucess2022
       }
     },
   ]

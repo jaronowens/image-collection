@@ -28,7 +28,7 @@ const MediaRender = ({mediaNode, thumbnail}) => {
     } else {
         // thumbnail image display
         if(thumbnail) {
-            mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.imageURL.replace(' ', '%20')})` }}></div>);
+            mediaRender = (<div className="thumbnail" style={{ backgroundImage: `url(${mediaNode.imageURL}` }}></div>);
         } else {
             mediaRender = (<div className="media-image"><img src={mediaNode.imageURL} alt={mediaNode.name}/></div>);
         }
