@@ -27,7 +27,6 @@ const MediaList = ({ nodes, hasPager = false, itemsPerPage = 6, fancybox = true 
     } else {
         displayedImages = nodes;
     }
-    console.log(displayedImages);
 
 
     return (

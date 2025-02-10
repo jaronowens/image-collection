@@ -2,12 +2,13 @@ import React from "react";
 import { graphql } from "gatsby";
 import MediaList from "../components/Media/MediaList";
 import Layout from "../components/Layout/Layout";
+import { convertGatsbyNodes } from "../components/Media/helpers/gatsby-node";
 
 const ImagePage = ({ data }) => {
-
+  const newNodes = convertGatsbyNodes(data.allFile.nodes);
     return (
         <Layout>
-            <MediaList nodes={data.allFile.nodes} hasPager={true} itemsPerPage={12} gallery={'images'}/>
+            <MediaList nodes={newNodes} hasPager={true} itemsPerPage={12} gallery={'images'}/>
         </Layout>
     );
 }

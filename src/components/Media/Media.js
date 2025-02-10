@@ -9,7 +9,7 @@ const Media = ({ mediaNode, fancybox, thumbnail = true }) => {
         return (
             <>
                 <Fancybox className="media-item">
-                    <a data-fancybox href={`${mediaNode.publicURL}`} data-src={`#${mediaNode.id}`}>
+                    <a data-fancybox href={`${mediaNode.imageURL}`} data-src={`#${mediaNode.id}`}>
                         <MediaRender mediaNode={mediaNode} thumbnail={thumbnail} />
                     </a>
                 </Fancybox>

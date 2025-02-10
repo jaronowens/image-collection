@@ -8,6 +8,7 @@ import Controls from "../components/Controls/Controls";
 import Button from "../components/Controls/Button";
 
 import loadingGif from "../images/loading.gif";
+import { convertGatsbyNodes } from "../components/Media/helpers/gatsby-node";
 
 const RandomSessionPage = ({ data }) => {
 
@@ -35,7 +36,7 @@ const RandomSessionPage = ({ data }) => {
   } = useStopwatch({ autoStart: true });
 
   useEffect(() => {
-    randomizedNodes = randomizeSession(data.allFile.nodes);
+    randomizedNodes = randomizeSession(convertGatsbyNodes(data.allFile.nodes));
     setMediaNodes(randomizedNodes);
   }, [randomizedNodes]);
 

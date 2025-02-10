@@ -2,26 +2,11 @@ import { graphql } from "gatsby";
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import MediaList from "../../components/Media/MediaList";
+import { convertGatsbyNodes } from "../../components/Media/helpers/gatsby-node";
 
 const IndexPage = ({ data }) => {
 
-  const intializeCollection = (mediaNodes) => {
-    const stateNodes = [];
-    mediaNodes.forEach(mediaNode => {
-      const workingNode = {
-        ...mediaNode,
-        values: {
-          selected: false,
-          rating: 0,
-          favorite: false
-        }
-      };
-      stateNodes.push(workingNode);
-    });
-    return stateNodes;
-  };
-
-  const [collection, setCollection] = useState(intializeCollection(data.allFile.nodes));
+  const collection = convertGatsbyNodes(data.allFile.nodes);
 
   return (
     <Layout>
