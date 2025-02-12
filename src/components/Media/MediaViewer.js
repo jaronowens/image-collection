@@ -1,7 +1,5 @@
 import React from "react";
 import Media from "./Media";
-import Controls from "../Controls/Controls";
-import Button from "../Controls/Button";
 
 const MediaViewer = ({ node, fancybox = false, controls }) => {
 
